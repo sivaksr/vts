@@ -31,8 +31,16 @@
 					 <div class="col-md-6">
 					  <div class="form-group">
                         <label for="exampleInputConfirmPassword1">Working Station Region</label>
-                        <input type="text" class="form-control" name="region" required placeholder="Enter Working Region" value="<?php echo isset($user_details['region'])?$user_details['region']:'' ?>">
-                      
+                      <select id="region" name="region"  class="form-control"  >
+								<option value="">Select</option>
+								<?php foreach ($regions_list as $list){ ?>
+								<?php if($list['r_id']==$user_details['region']){ ?>
+								<option selected value="<?php echo $list['r_id']; ?>"><?php echo $list['region_name']; ?></option>
+								<?php }else{ ?>
+								<option value="<?php echo $list['r_id']; ?>"><?php echo $list['region_name']; ?></option>
+								 <?php } ?>
+				                  <?php }?>
+								</select>
 					  
 					  </div>
                       </div>

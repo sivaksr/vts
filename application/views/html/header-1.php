@@ -98,11 +98,12 @@
 		  <?php }?>
         </ul>
 		<div class="form-inline my-2 my-lg-0">
-		<div class="btn-group show">
-		  <a class="btn btn-outline dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">Profile<span class="caret"></span>
+		<div class="btn-group ">
+		  <a class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">Profile<span class="caret"></span>
 		  </a>
 		  <ul class="dropdown-menu">
-			<a href="#"><li class="btn">Change Password</li></a>
+			<a href="<?php echo base_url('profile');?>"><li class="fa fa-user-md" aria-hidden="true">My Profile</li></a>
+			<a href="<?php echo base_url('profile/changepassword');?>"><li class="fa fa-key" aria-hidden="true">Change Password</li></a>
 		  </ul>
 		</div>
 		  
