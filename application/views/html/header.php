@@ -59,6 +59,7 @@
           <form action="<?php echo base_url('login/loginpost');?>" method="post" >
 			  <input class="form-control mr-sm-1" type="email" placeholder="Enter Email" name="email" required>
 			  <input class="form-control mr-sm-1" type="password" placeholder="Enter Password" name="password" required>
+			  <a href="#" class="fgtpwd">Forgot Password</a>
 			  <button  type="submit"  class="btn btn-outline-success my-2 my-sm-0">Login</button>
 			  <!--<a href="<?php echo base_url('register');?>"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</a>-->
 		  </form>

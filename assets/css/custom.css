@@ -4,6 +4,9 @@
 	color:#aaa;
 }
 /* notifications view end*/
+
+.fgtpwd{color:#fff;}
+.fgtpwd:hover{color:#d0d0d0; text-decoration:none;}
 .seats {
   display: flex;
   flex-direction: row;
