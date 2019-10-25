@@ -30,7 +30,7 @@
 									<td><?php echo isset($list['owner_name'])?$list['owner_name']:'' ?></td>
 									<td><?php echo isset($list['chasis_number'])?$list['chasis_number']:'' ?></td>
 									<td><?php echo isset($list['city'])?$list['city']:'' ?></td>
-									<td><?php echo isset($list['ps_region'])?$list['ps_region']:'' ?></td>
+									<td><?php echo isset($list['region_name'])?$list['region_name']:'' ?></td>
 									<td>
 								<span class="badge badge-success"><?php echo isset($list['vehicle_type'])?$list['vehicle_type']:'' ?></span>
 									</td>

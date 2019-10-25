@@ -42,13 +42,18 @@ class Home_model extends CI_Model
 	}
 	/* search */
 	public function get_vehicles_list($vehicle_numbers){
-	$this->db->select('vehicles.*')->from('vehicles');
+	$this->db->select('vehicles.*,regions.region_name')->from('vehicles');
+	$this->db->join('regions','regions.r_id=vehicles.ps_region','left');
+	$this->db->where('vehicles.status',1);
 	$this->db->where('vehicles.vehicle_number',$vehicle_numbers);
 	$this->db->or_where('vehicles.chasis_number',$vehicle_numbers);
-	$this->db->where('vehicles.status',1);
 	return $this->db->get()->result_array();
 	}
-	
+	public function get_employee_details($u_id){
+	$this->db->select('users.*')->from('users');
+	$this->db->where('users.u_id',$u_id);
+    return $this->db->get()->row_array();
+	}
 	
 	
 	

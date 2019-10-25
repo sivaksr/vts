@@ -89,7 +89,7 @@ class Employees extends Back_end {
 	     $this->load->view('employees/list',$data); 
 	     $this->load->view('html/footer'); 
 	     }else if($admindetails['role_id']==2){
-		$data['employees_list']=$this->Employees_model->get_employees_list_not_admin();
+		$data['employees_list']=$this->Employees_model->get_employees_list_not_admin($admindetails['region']);
 	     $this->load->view('employees/list',$data); 
 	     $this->load->view('html/footer');  	 
 		 }
@@ -127,7 +127,14 @@ class Employees extends Back_end {
 		{
 		 $login_details=$this->session->userdata('vts_details');
 	     $post=$this->input->post();	
-			 $details=$this->Employees_model->get_employee_details($post['u_id']);
+		$details=$this->Employees_model->get_employee_details($post['u_id']);
+		if($details['email']!=$post['email']){
+		$check=$this->Home_model->check_email_already_exit($post['email']);
+		if(count($check)>0){
+		$this->session->set_flashdata('error',"Email address already exists. Please another email address.");
+		redirect('employees/edit/'.base64_encode($post['u_id']));
+		}	
+		}	 
 				if(isset($_FILES['profile_pic']['name']) && $_FILES['profile_pic']['name']!=''){
 				unlink('assets/profile_pics/'.$details['profile_pic']);
 				$temp = explode(".", $_FILES["profile_pic"]["name"]);

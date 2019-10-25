@@ -68,6 +68,7 @@
             <a class="nav-link" href="<?php echo base_url('vehicles/solvedlist');?>">Vehicles Solved List</a>
           </li>
 		<?php }else if($user_details['role_id']==2){?>
+		
 		   <li class="nav-item <?php if($this->uri->segment(2)=='adds'){ echo "active";} ?>">
             <a class="nav-link" href="<?php echo base_url('employees/adds');?>">Add Employees</a>
           </li>
@@ -75,7 +76,7 @@
             <a class="nav-link" href="<?php echo base_url('employees/all');?>">Employees List</a>
           </li>
 		  
-		   <li class="nav-item <?php if($this->uri->segment(2)=='all'){ echo "active";} ?>">
+		   <li class="nav-item <?php if($this->uri->segment(2)=='regionwiselist'){ echo "active";} ?>">
             <a class="nav-link" href="<?php echo base_url('vehicles/regionwiselist');?>">Region Wise Vehicles List</a>
           </li>
 		<?php }else if($user_details['role_id']==3){?>
@@ -106,12 +107,12 @@
 			<a href="<?php echo base_url('profile/changepassword');?>"><li class="fa fa-key" aria-hidden="true">Change Password</li></a>
 		  </ul>
 		</div>
-		  
+		<hr>
+		 <a href="<?php echo base_url('login/logout');?>" class="btn btn-outline-success my-2 my-sm-0" >Logout</a>
+
         </div>
-        <div class="form-inline my-2 my-lg-0">
-		<a href="<?php echo base_url('login/logout');?>" class="btn btn-outline-success my-2 my-sm-0" >Logout</a>
-		  
-        </div>
+		
+       
       </div>
     </nav>
 	</div>

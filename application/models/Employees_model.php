@@ -33,12 +33,13 @@ class Employees_model extends CI_Model
 	$this->db->where('users.status!=',2);
     return $this->db->get()->result_array();
 	}
-	public function get_employees_list_not_admin(){
+	public function get_employees_list_not_admin($region){
 	$this->db->select('users.*,roles.role,regions.region_name')->from('users');
 	$this->db->join('roles','roles.role_id=users.role_id','left');
 	$this->db->join('regions','regions.r_id=users.region','left');
 	$this->db->where('users.status!=',2);
 	$this->db->where('users.role_id!=',1);
+	$this->db->where('users.region',$region);
     return $this->db->get()->result_array();
 	}
 	public function get_regions_list(){

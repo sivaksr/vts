@@ -21,6 +21,7 @@ class Home extends CI_Controller
 	     $post=$this->input->post();
 		if(isset($post['signup'])&& $post['signup']=='submit'){
 		$data['vehicles_list']=$this->Home_model->get_vehicles_list($post['vehicle_numbers']);	
+		 //echo'<pre>';print_r($data);exit;
 		 $this->load->view('html/header'); 
 		 $this->load->view('html/vehicle_data',$data); 
 		 $this->load->view('html/script'); 
@@ -42,7 +43,6 @@ class Home extends CI_Controller
 		if(!$this->session->userdata('vts_details'))
 		{	 
 	     $post=$this->input->post();
-		//echo '<pre>';print_r($post);exit;
 		 $data['vehicles_list']=$this->Home_model->get_vehicles_list($post['vehicle_numbers']);
 		//echo '<pre>';print_r($data);exit;
 		 $this->load->view('html/search',$data);
@@ -52,74 +52,49 @@ class Home extends CI_Controller
 		}
 	}
 	
-	/*
-	public function search()
+	
+	
+	public function forgotpassword()
 	{	
 		if(!$this->session->userdata('vts_details'))
 		{	 
-	     $this->load->view('html/header'); 
-		 $this->load->view('html/search'); 
+	     $post=$this->input->post();
+		 $this->load->view('html/header-2'); 
+		 $this->load->view('html/forgot-password'); 
+		 $this->load->view('html/script'); 
 	     $this->load->view('html/footer'); 
 	     }else{
 			$this->session->set_flashdata('error',"technical problem occurred. please try again once");
 			redirect('');
 		}
 	}
-	
-    public function search(){
-			$post=$this->input->post();
-		   	if(isset($post['vehicle_number']) && $post['vehicle_number']!=''){
-           $vehicles_details=array('vehicle_number'=>$post['vehicle_number'],'chasis_number'=>$post['vehicle_number']);
-			$vehicles_list=$this->Home_model->get_vehicles_list($vehicles_details);
-			echo'<pre>';print_r($vehicles_list);exit;
-
-				/*
-				$totals=array_merge($vehicles_list);
-				 if(isset($totals) && count($totals)>0){
-					$requriment = array();
-
-					foreach($totals as $el) {
-					   $requried = $el['r_id'];
-					   if(!in_array($requried, $requriment))
-					   {
-							$deta=$this->Home_model->get_requriement_details($requried);
-							//echo'<pre>';print_r($deta);exit;
-
-							if($el['r_id']!=''){
-								$data[$el['r_id']]=$el;
-								$data[$el['r_id']]['req_id']=$deta;
-							}						  
-							//echo $requried ;
-						   array_push($requriment,$requried);
-					   }
-					}
-					
-					$lis['requriments_list']=$data;
-					//echo'<pre>';print_r($data);exit;	
-					
-				
-				}
-				if(isset($lis) && count($lis)>0){
-					$this->load->view('html/serach',$lis);
-					$this->load->view('html/footer');
+	public function forgotpasswordpost(){
+		if(!$this->session->userdata('vts_details'))
+		{
+		$post=$this->input->post();
+		$check_email=$this->Home_model->check_email_already_exit($post['email']);
+			if(count($check_email)>0){
+				$this->load->library('email');
+				$this->email->set_newline("\r\n");
+				$this->email->set_mailtype("html");
+				$this->email->to($check_email['email']);
+				$this->email->from('vts@gmail.com', 'VTS'); 
+				$this->email->subject('Forgot Password'); 
+				$body = "<b> Your Account login Password is </b> : ".$check_email['org_password'];
+				$this->email->message($body);
+			    $this->email->send();
+				$this->session->set_flashdata('success',"Password sent to your registered email address. Please Check your registered email address");
+				redirect('');
 				}else{
-					$this->session->set_flashdata('error',"Seach having no data. Please try again.");
+					$this->session->set_flashdata('error',"The email you entered is not a registered email. Please try again.");
 					redirect('');
 				}
-				
-				
-		}else{
-			$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
-			redirect('');
-		}
-		
-			
+			}else{
+				$this->session->set_flashdata('error','technical problem occurred. please try again once');
+				redirect('');	
+			}
 
 	}
-*/
-
-
-	
 
 }
 ?>

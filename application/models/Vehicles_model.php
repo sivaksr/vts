@@ -63,18 +63,18 @@ class Vehicles_model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 	public function get_found_vehicles_list(){
-	$this->db->select('vehicles.*,users.name')->from('vehicles');	
-   $this->db->join('users','users.u_id=vehicles.user_id','left');	
+	$this->db->select('vehicles.*,users.name,regions.region_name')->from('vehicles');	
+   $this->db->join('users','users.u_id=vehicles.user_id','left');
+   $this->db->join('regions','regions.r_id=vehicles.ps_region','left');
 	$this->db->where('vehicles.status',1);
-	//$this->db->where('vehicles.user_id',$u_id);
 	$this->db->where('vehicles.vehicle_type','Found Vehicle');
     return $this->db->get()->result_array();
 	}
 	public function get_lost_vehicles_list(){
-	$this->db->select('vehicles.*,users.name')->from('vehicles');
-   $this->db->join('users','users.u_id=vehicles.user_id','left');	
+	$this->db->select('vehicles.*,users.name,regions.region_name')->from('vehicles');
+   $this->db->join('users','users.u_id=vehicles.user_id','left');
+   $this->db->join('regions','regions.r_id=vehicles.ps_region','left');
 	$this->db->where('vehicles.status',1);
-	//$this->db->where('vehicles.user_id',$u_id);
 	$this->db->where('vehicles.vehicle_type','Lost Vehicle');
     return $this->db->get()->result_array();
 	}

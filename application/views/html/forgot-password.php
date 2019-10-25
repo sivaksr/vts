@@ -46,13 +46,14 @@ form.example::after {
 
 			
 			 <div class="centered">
-			 <form  id="suscribe" method="post" class="example" action="<?php echo base_url('home');?>">
-			 <div class="form-group">
-			 <input type="text" autocomplete="off" onchange="get_vehicle_list(this.value);" id="vehicle_numbers"  name="vehicle_numbers" value=""  Placeholder="Enter Vehicle Number or Chasis Number"    required>
+			 <!--<form  id="suscribe" method="post" class="example" action="<?php echo base_url('home');?>">
+			  <div class="form-group">
+			  <input type="text" autocomplete="off" onchange="get_vehicle_list(this.value);" id="vehicle_numbers"  name="vehicle_numbers"  Placeholder="Enter Vehicle Number or Chasis Number"   id="automplete-1" required>
 			  </div>
 			  <br><br><br>
 			  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="signup" value="submit">Search</button>
-			</form>
+			
+			</form>-->
 			
 			  </div>
 			  <div id="student_data" class="" style="">
@@ -66,53 +67,11 @@ form.example::after {
 			  
 			  
         </div>
-<br>
-          <!-- <a href="<?php echo base_url(''); ?>"><button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="float:right">Back to Home</button></a>-->
 
-			  <!-- Simple Datatable start -->
-			  <?php if(isset($vehicles_list)&& count($vehicles_list)>0){?>
-			   <h4 class="card-title">Vehicles List</h4>
-					<div class="row">
-						<table class="data-table stripe table-bordered">
-							<thead>
-								<tr>
-									<th>Vehicle Number</th>
-									<th>Owner Name</th>
-									<th>Chasis Number</th>
-									<th>City</th>
-									<th>PS Region</th>
-									<th>Vehicle Type</th>
-									<th>Date</th>
-								</tr>
-							</thead>
-							<tbody>
-							<?php $cnt=1; foreach($vehicles_list as $list){?>
-								<tr>
-									<td><?php echo isset($list['vehicle_number'])?$list['vehicle_number']:'' ?></td>
-									<td><?php echo isset($list['owner_name'])?$list['owner_name']:'' ?></td>
-									<td><?php echo isset($list['chasis_number'])?$list['chasis_number']:'' ?></td>
-									<td><?php echo isset($list['city'])?$list['city']:'' ?></td>
-									<td><?php echo isset($list['region_name'])?$list['region_name']:'' ?></td>
-									<td>
-								<?php if($list['vehicle_type']=='Found Vehicle'){ ?>
-								<span class="badge badge-success"><?php echo isset($list['vehicle_type'])?$list['vehicle_type']:'' ?></span>
-								<?php }else if($list['vehicle_type']=='Lost Vehicle'){?>
-								<span class="badge badge-danger"><?php echo isset($list['vehicle_type'])?$list['vehicle_type']:'' ?></span>
-								<?php }?>
-								
-									</td>
-									<td><?php echo isset($list['created_at'])?$list['created_at']:'' ?></td>
-								</tr>
-								
-							<?php $cnt++;}?>
-							</tbody>
-						</table>
-					</div>
-			  
-			  
-            <?php }else{?>
-         <div style="color:red;">no data available</div>
-         <?php }?>
+
+
+    
+
 
 
     </div>
