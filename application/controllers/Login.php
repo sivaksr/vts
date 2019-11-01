@@ -27,10 +27,8 @@ class Login extends CI_Controller {
 			if(count($check_login)>0){
 				$login_details=$this->Home_model->get_admin_details($check_login['u_id']);
 				if($login_details['role_id']==3){
-				$this->session->set_userdata('vts_details',$login_details);
 				redirect('vehicles/add');
 				}else{
-				$this->session->set_userdata('vts_details',$login_details);
 				redirect('employees/adds');	
 				}
 			}else{

@@ -8,10 +8,7 @@ class Home extends CI_Controller
 		$this->load->model('Home_model');
 		$this->load->library('user_agent');
 		$this->load->library('session');
-	    if($this->session->userdata('vts_details'))
-			{
-			$admindetails=$this->session->userdata('vts_details');
-			}
+	   
 	}
 
 	public function index()

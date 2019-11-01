@@ -3,7 +3,7 @@
 <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Add Vehicles</h4>
+                    <h4 class="card-title">Edit Vehicles</h4>
                     <form id="defaultForm"  class="forms-sample" method="post" action="<?php echo base_url('vehicles/editpost'); ?>" >
 					<input type="hidden" name="v_id" id="v_id" value="<?php echo isset($vehicles_details['v_id'])?$vehicles_details['v_id']:'' ?>" >
 					<div class="row">
@@ -63,25 +63,22 @@ $(document).ready(function() {
 			vehicle_number: {
                 validators: {
 					notEmpty: {
-						message: 'Employee Name is required'
-					},
-					regexp: {
-					regexp: /^[a-zA-Z0-9. ]+$/,
-					message: 'Employee Name can only consist of alphanumeric, space and dot'
+						message: 'Vehicle Number is required'
 					}
+					
 				}
             },
-			designation: {
+			owner_name: {
                 validators: {
 					notEmpty: {
-						message: 'Designation is required'
+						message: 'Owner Name is required'
 					}
 				}
             },
-			state: {
+			chasis_number: {
                  validators: {
 					notEmpty: {
-						message: 'State is required'
+						message: 'Chasis Number is required'
 					}
 				
 				}
@@ -94,31 +91,14 @@ $(document).ready(function() {
 				
 				}
             },
-			 email: {
+			vehicle_type: {
                  validators: {
 					notEmpty: {
-						message: 'Email Id is required'
-					},
-					regexp: {
-					regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-					message: 'Please enter a valid Email Id. For example johndoe@domain.com.'
-					}
-				}
-            },
-			mobile_number: {
-                 validators: {
-					notEmpty: {
-						message: 'Mobile Number is required'
-					},
-					regexp: {
-					regexp:  /^[0-9]{10}$/,
-					message:'Mobile Number must be 10 digits'
+						message: 'Vehicle Type is required'
 					}
 				
 				}
-            },
-			
-			
+            }, 
 			
 			
 			

@@ -7,7 +7,6 @@ class Employees extends Back_end {
 	public function __construct() 
 	{
 		parent::__construct();	
-		$this->load->library('session');
 		$this->load->model('Employees_model');
 		$this->load->model('Home_model');
 	}
